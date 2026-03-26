@@ -34,7 +34,7 @@ public class Livro{
 public void ExibirLivro()
 {
     string status = disponivel ? "Sim" : "Não";
-    Console.WriteLine($"\nTitulo: {titulo}\nAno: {ano}\nDisponível: {status}\n");
+    Console.WriteLine($"\nTítulo: {titulo}\nAno: {ano}\nDisponível: {status}\n");
 }
 
 public void Emprestar(){
