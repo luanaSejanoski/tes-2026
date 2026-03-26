@@ -30,17 +30,19 @@ public class Livro{
     public bool disponivel;
 
 
+
 public void ExibirLivro()
 {
-    Console.WriteLine($"Titulo: {titulo}\nAno: {ano}");
+    string status = disponivel ? "Sim" : "Não";
+    Console.WriteLine($"\nTitulo: {titulo}\nAno: {ano}\nDisponível: {status}\n");
 }
 
 public void Emprestar(){
    if(disponivel){
-    disponivel = true;
-    Console.WriteLine($"Livro {titulo} disponível!");
+    disponivel = false;
+    Console.WriteLine($"Livro {titulo} emprestado!");
    } else{
-    Console.WriteLine($"Livro {titulo} não está disponível");
+    Console.WriteLine($"Livro {titulo} não está disponível!");
     }  
  
    
@@ -48,12 +50,12 @@ public void Emprestar(){
 
 public void Devolver(){
    if(!disponivel){
-    disponivel = false;
+    disponivel = true;
     Console.WriteLine($"Livro {titulo} devolvido com sucesso!");
    } else{
-    Console.WriteLine($"O livro {titulo} já foi devolvido!");
+    Console.WriteLine($"O livro {titulo} já está disponível!");
     } 
-    }
+}
 
 
 
@@ -86,11 +88,47 @@ class Program
         l1.ano = 2016;
         l1.disponivel = true;
 
+       Livro l2 = new Livro();
+       l2.titulo = "Além da Porta Sussurrante";
+       l2.ano = 2023;
+       l2.disponivel = false;
+
+
+       Livro l3 = new Livro();
+       l3.titulo = "Jogos vorazes";
+       l3.ano = 2012;
+       l3.disponivel = false;
+
+
+
+        Livro[] biblioteca = new Livro[3];
+        biblioteca[0] = l1;
+        biblioteca[0].ExibirLivro();
+        Console.WriteLine("----------------------------\n");
+
+        biblioteca[1] = l2;
+        biblioteca[1].ExibirLivro();
+        Console.WriteLine("----------------------------\n");
+
+        biblioteca[2] = l3;
+        biblioteca[2].ExibirLivro();
+        Console.WriteLine("----------------------------\n");
+
+        l1.ExibirLivro();
+        l1.Emprestar();
         l1.ExibirLivro();
         l1.Emprestar();
         l1.Devolver();
-        l1.Emprestar();
-        
+        l1.ExibirLivro();
+      
+        l2.ExibirLivro();
+        l2.Emprestar();
+        l2.Devolver();
+        l2.ExibirLivro();
+
+        l3.ExibirLivro();
+        l3.Devolver();
+        l3.ExibirLivro();
     }
 }
 }
