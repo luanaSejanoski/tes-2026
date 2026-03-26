@@ -32,42 +32,42 @@ public class Livro{
 
 public void ExibirLivro()
 {
-    Console.WriteLine($"Titulo: {titulo}\nAno: {ano}\nDisponível: {disponivel}");
+    Console.WriteLine($"Titulo: {titulo}\nAno: {ano}");
 }
 
 public void Emprestar(){
    if(disponivel){
     disponivel = true;
-    Console.WriteLine("Livro disponível!");
-    else{
-    Console.WriteLine("Esse livro não está disponível");
+    Console.WriteLine($"Livro {titulo} disponível!");
+   } else{
+    Console.WriteLine($"Livro {titulo} não está disponível");
     }  
  
-   }
+   
 }
 
 public void Devolver(){
-    public void Emprestar(){
-   if(!=disponivel){
+   if(!disponivel){
     disponivel = false;
-    Console.WriteLine("Livro não esta disponível!");
-    else{
-    Console.WriteLine("Livro disponível");
-    }  
-   }
+    Console.WriteLine($"Livro {titulo} devolvido com sucesso!");
+   } else{
+    Console.WriteLine($"O livro {titulo} já foi devolvido!");
+    } 
     }
-}
+
+
+
 
 class Program
 {
     static void Main()
     {
         Carro c1 = new Carro();
-        c1.fabricante = "Toyota";
-        c1.modelo = "Corolla";
-        c1.cor = "Roxo";
-        c1.aro = 17;
-        c1.ano = 2022;
+        c1.fabricante = "Chevrolet";
+        c1.modelo = "Impala 1967";
+        c1.cor = "Preto";
+        c1.aro = 15;
+        c1.ano = 1967;
         c1.estado = false;
 
         c1.ExibirDados();
@@ -83,13 +83,14 @@ class Program
 
         Livro l1 = new Livro();
         l1.titulo = "Jantar Secreto";
-        li.ano = 2016;
+        l1.ano = 2016;
         l1.disponivel = true;
+
+        l1.ExibirLivro();
+        l1.Emprestar();
+        l1.Devolver();
+        l1.Emprestar();
         
     }
-
-
-
-    
-
+}
 }
