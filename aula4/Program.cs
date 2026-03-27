@@ -24,6 +24,9 @@ public void desligou(){
 
 }
 
+//-----------------------------------------------------------
+
+
 public class Livro{
     public string titulo;
     public int ano;
@@ -44,8 +47,6 @@ public void Emprestar(){
    } else{
     Console.WriteLine($"Livro {titulo} não está disponível!");
     }  
- 
-   
 }
 
 public void Devolver(){
@@ -56,9 +57,51 @@ public void Devolver(){
     Console.WriteLine($"O livro {titulo} já está disponível!");
     } 
 }
+}
+
+//---------------------------------------------------------------
+
+public class Produto{
+    public string nome;
+    public double preco;
+    public int qntd;
 
 
+    public void Exibir(){
+        Console.WriteLine($"Nome: {nome}\nPreço: R${preco}\nQuantidade: {qntd}\n");
+    }
 
+    public void AdicionarEstoque(){
+        Console.WriteLine("Digite a quantidade  que deseja adicionar no estoque: ");
+        int estoque = int.Parse(Console.ReadLine());
+        qntd +=  estoque;
+    }
+
+    public void RemoverEstoque(){
+        Console.WriteLine("Digite a quantidade que deseja remover do estoque: ");
+        int estoque = int.Parse(Console.ReadLine());
+        if(estoque <= qntd){
+          qntd -= estoque;
+        }
+        else{
+            Console.WriteLine("Valor inválido.");
+        }
+        
+    } 
+
+  public void AplicarDesconto(int percentual){
+        double desconto = percentual / 100.0;
+        preco -= desconto * preco;
+        Console.WriteLine($"Desconto: {desconto * 100}%\nPreço com desconto: R${preco}");
+    }
+
+
+    public void CalcularValorTotal(){
+        double total = preco * qntd;
+        Console.WriteLine($"Total: R${total}\n");
+    }
+
+}
 
 class Program
 {
@@ -129,6 +172,21 @@ class Program
         l3.ExibirLivro();
         l3.Devolver();
         l3.ExibirLivro();
+
+       Console.WriteLine("-----------------------------------\n");
+
+
+        Produto p1 = new Produto();
+        p1.nome = "Porta retrato";
+        p1.preco = 20.0;
+        p1.qntd = 8;
+
+        p1.Exibir();
+        p1.RemoverEstoque();
+        p1.AdicionarEstoque();
+        p1.Exibir();
+        p1.AplicarDesconto(50);
+        p1.CalcularValorTotal();
+        p1.Exibir();
     }
-}
 }
