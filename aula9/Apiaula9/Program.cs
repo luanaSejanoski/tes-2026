@@ -23,7 +23,7 @@ app.MapGet("/contatos/{nome}", (string nome) =>
     foreach (var c in contatos)
     {
         if (c.Nome.ToLower() == nome.ToLower())
-        
+        {
             return Results.Ok(c);
         }
     }
